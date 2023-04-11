@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/amam.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/industry.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.5.1.min.js"></script>
@@ -14,10 +15,11 @@
     <script src="${pageContext.request.contextPath}/resources/js/amam.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <body>
 <header><jsp:include page="include/header.jsp" /></header>
-<div class="amam_side"></div>
-<div class="amam_main_cont">
+<section class="amam_main_cont">
 	<div class="search_wrap">
 		<table>
 			<tr>
@@ -148,6 +150,7 @@
 		<!-- <p>[멘토 등록 문의] media.industry.link@gmail.com</p> -->
 	</div>
 </div>
+</section>
 <div class="amam_side"></div>
 </body>
 </html>

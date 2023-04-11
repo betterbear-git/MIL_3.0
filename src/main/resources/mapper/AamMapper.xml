@@ -20,4 +20,31 @@
 		</where>
 	</select>
 
+	<select id="qnaList" resultType="com.spring.starter.model.qnaDTO" parameterType="map">
+		select uid,left(title,10) as title,left(date,10) as date from aam_qna
+		order by uid desc
+		limit #{startList}, #{listSize}
+	</select>
+
+	<select id="getQnaListCnt" resultType="int">
+		SELECT
+			count(*) as listCnt
+		FROM
+			aam_qna
+	</select>
+
+	<select id="surveyList" resultType="com.spring.starter.model.surveyDTO" parameterType="map">
+		select id,track_id,name,left(company,13) as company, left(graduate,8) as graduate from survey
+		where id != 1
+		order by id
+		limit #{startList}, #{listSize}
+	</select>
+
+	<select id="getSurveyListCnt" resultType="int">
+		SELECT
+			count(*) as listCnt
+		FROM
+			survey
+	</select>
+
 </mapper>

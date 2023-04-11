@@ -23,7 +23,7 @@
         </div>
     </div>-->
     <div id="menu">
-		<ul>
+		<ul class>
 			<li class="cil_menu"><a class="header_nav" onclick="location.href='/cil'">CIL</a></li>
 			<!-- <li class="ii_menu"><a id="header_nav"  onclick="location.href='industry'">INDUSTRY-INSIGHT</li> -->
 			<li class="amam_menu"><a class="header_nav" onclick="location.href='/aam'">AAM</a></li>

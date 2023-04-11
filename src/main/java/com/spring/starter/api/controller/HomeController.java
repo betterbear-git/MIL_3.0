@@ -1,5 +1,6 @@
 package com.spring.starter.api.controller;
 
+import com.spring.starter.common.util.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import com.spring.starter.dao.amamDAO;
 import com.spring.starter.dao.adminDAO;
 
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -57,21 +59,93 @@ public class HomeController {
     }
 
     @RequestMapping("aam")
-    public String aamView(Model model) throws Exception {
+    public String aamView(Model model
+            , @RequestParam(required = false, defaultValue = "1") int page
+
+            , @RequestParam(required = false, defaultValue = "1") int range) throws Exception {
         System.out.println("aam들어옴!~~~~~~!~!~@");
         amamDAO dao = sqlSession.getMapper(amamDAO.class);
         cilDAO cil_dao = sqlSession.getMapper(cilDAO.class);
 
         try {
+            //전체 게시글 개수 - qna
+            int qlistCnt = dao.getQnaListCnt();
+            //전체 게시글 개수 - survey
+            int slistCnt = dao.getSurveyListCnt();
+
+            //Pagination 객체생성 - qna
+            Pagination q_pagination = new Pagination();
+            q_pagination.setListSize(5);
+            q_pagination.setRangeSize(5);
+            q_pagination.pageInfo(page, range, qlistCnt);
+
+            //Pagination 객체생성 - sruvey
+            Pagination s_pagination = new Pagination();
+            s_pagination.setListSize(5);
+            s_pagination.setRangeSize(5);
+            s_pagination.pageInfo(page, range, slistCnt);
+
+            model.addAttribute("pagination", q_pagination);
+            model.addAttribute("s_pagination", s_pagination);
             model.addAttribute("videoList",dao.videoList());
             model.addAttribute("jobList", cil_dao.jobList());
-            System.out.println("testtesttest");
+            model.addAttribute("qnaList",dao.qnaList(q_pagination));
+            model.addAttribute("surveyList",dao.surveyList(s_pagination));
+
+
+            //System.out.println("testtesttest");
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
             //return "industry";
         }
         return "industry";
+    }
+    
+    //qna게시판
+    @RequestMapping("board")
+    public String boardList(Model model, @RequestParam(required = false, defaultValue = "1") int page
+            , @RequestParam(required = false, defaultValue = "1") int range) throws Exception {
+        System.out.println("board들어옴!~~~~~~!~!~@");
+        amamDAO dao = sqlSession.getMapper(amamDAO.class);
+        cilDAO cil_dao = sqlSession.getMapper(cilDAO.class);
+
+        try {
+            //전체 게시글 개수 - qna
+            int qlistCnt = dao.getQnaListCnt();
+
+            //Pagination 객체생성 - qna
+            Pagination q_pagination = new Pagination();
+            q_pagination.setListSize(5);
+            q_pagination.setRangeSize(5);
+            q_pagination.pageInfo(page, range, qlistCnt);
+            model.addAttribute("qnaList",dao.qnaList(q_pagination));
+
+            model.addAttribute("jobList", cil_dao.jobList());
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "qna";
+        }
+        return "qna";
+    }
+
+    //현직 선배들의 조언
+    @RequestMapping("advice")
+    public String adviceList(Model model) {
+        System.out.println("advice들어옴!~~~~~~!~!~@");
+        cilDAO dao = sqlSession.getMapper(cilDAO.class);
+
+        try {
+            //model.addAttribute("subjectList", dao.subjectList());
+            //model.addAttribute("jobList", dao.jobList());
+            System.out.println("testtesttest");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "advice";
+        }
+        return "advice";
     }
 
     /*
@@ -93,6 +167,7 @@ public class HomeController {
         }
         return "admin/main-dash";
     }
+
 
     @RequestMapping("admin/curriculum")
     public String adminCurriList(Model model) {

@@ -25,8 +25,8 @@ function getVideoDetail(id){
 }
 
 function submitVideoInfo(){
-    alert("비디오"+document.getElementById('set_mentor').value);
-    var id = document.getElementById('set_mentor').value;
+    alert("비디오"+document.getElementById('set_video').value);
+    var id = document.getElementById('set_video').value;
     if(id >0) {
         $.ajax({
             type: 'POST',
@@ -34,7 +34,7 @@ function submitVideoInfo(){
             async: true,
             data: {
                 "id": id,
-                "name":document.getElementById('mentor_name').value,
+                "name":document.getElementById('video_title').value,
                 "industry_name":document.getElementById('mentor_industry_name').value,
                 "email":document.getElementById('mentor_email').value,
                 "area":document.getElementById("mentor_area").value
