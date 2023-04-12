@@ -24,7 +24,7 @@
     </div>
 
     <div class="menu_box">
-        		<span id="menu_box_cil" onclick=""><a onclick="location.href='cil'">
+        		<span id="menu_box_cil" onclick="location.href='/cil'">
         			<div class="left_up">
 			          	<p class="menu_box_sub_title">Curriculum-Career path Link</p>
 			          	<p class="menu_box_cont">미디어학과의 교과과정을 분야별/직무별<br/>커리큘럼으로 볼 수 있습니다.</p>
@@ -34,10 +34,10 @@
 			          </div></a>
                     </a>
 			    </span>
-        <span id="menu_box_aam" onclick=""><a onclick="location.href='industry'">
+        <span id="menu_box_aam" onclick="location.href='/aam'">
 			          <div class="left_up">
 			          	<p class="menu_box_sub_title">Ajou Alumni Mentors</p>
-			          	<p class="menu_box_cont">선배에게 질의응답을 할 수 있꼬<br/>학습 결과물을 확인할 수 있습니다.</p>
+			          	<p class="menu_box_cont">선배에게 질의응답을 할 수 있고<br/>학습 결과물을 확인할 수 있습니다.</p>
 			          </div>
 			          <div class="right_bottom">
 			          	<p class="menu_box_title">AAM</p>

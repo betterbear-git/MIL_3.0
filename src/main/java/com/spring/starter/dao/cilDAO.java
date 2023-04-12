@@ -18,4 +18,6 @@ public interface cilDAO {
     public ArrayList<cilPreDTO> subjectPreList(String subject);
     //public ArrayList<cilDetailCoreDTO> subjectDetailCoreList(String subject);
     public ArrayList<cilTrackDTO> subjectTrackList(int page_id);
+    public ArrayList<cilTrackDTO> subjectMicroList(int div);
+
 }

@@ -21,7 +21,7 @@
 		<where>
 			<if test="value != null">AND ms.code = #{subject} </if>
 		</where>
-		and cs.page_id in ('129','130','131','132','133')
+		and cs.page_id in ('129','130','131','132','133','777','888','999')
 	</select>
 	<select id="subjectCoreList" resultType="com.spring.starter.model.cilDetailCoreDTO">
 		select cs.subject,cs.page_id

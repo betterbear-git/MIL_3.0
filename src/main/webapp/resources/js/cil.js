@@ -131,6 +131,15 @@ function trackClick(page_id,job_id){
 					case 133:
 						giClick(core,support);
 						break;
+                    case 777:
+                        micro7Click(core);
+                        break;
+                    case 888:
+                        micro8Click(core);
+                        break;
+                    case 999:
+                        micro9Click(core);
+                        break;
 				}
 			},
 			complete: function() {
@@ -140,6 +149,88 @@ function trackClick(page_id,job_id){
                 console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			}			
 		});
+}
+
+function areaChange(div){
+    var ch_td;
+    var core = new Array();
+    var support = new Array();
+    reset_color();
+
+    $.ajax({
+        type: 'POST',
+        url: '/cil/area',
+        async: true,
+        data: {"div" : div},
+        dataType : 'json',
+        success: function (data) {
+            switch(div)
+            {
+                case 0: //track 선택
+                    //deClick(core,support);
+                    //alert("track선택");
+                    document.getElementById('area_micro').style.background = "white";
+                    document.getElementById('area_micro').style.color = "#3462DC";
+                    document.getElementById('area_track').style.background = "#3462DC";
+                    document.getElementById('area_track').style.color = "white";
+
+                    document.getElementById('area_table').style.removeProperty('display');
+                    document.getElementById('micro_table').style.display = "none";
+                    break;
+                case 1: //micro 선택
+                    //cdClick(core,support);
+                    //alert("micro선택");
+                    document.getElementById('area_track').style.background = "white";
+                    document.getElementById('area_track').style.color = "#3462DC";
+                    document.getElementById('area_micro').style.background = "#3462DC";
+                    document.getElementById('area_micro').style.color = "white";
+
+                    document.getElementById('area_table').style.display = "none";
+                    document.getElementById('micro_table').style.display = "flex";
+
+                    break;
+            }
+        },
+        complete: function() {
+        },
+        error:function(request, status, error){
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+    });
+}
+
+function micro7Click(core)
+{
+    reset_color();
+
+    for(i=0;i<core.length;i++)
+    {
+        ch_td = document.getElementById(core[i]);
+        ch_td.style.background = "#F0E959";
+    }
+}
+
+function micro8Click(core)
+{
+    reset_color();
+
+    for(i=0;i<core.length;i++)
+    {
+        ch_td = document.getElementById(core[i]);
+        ch_td.style.background = "#F0758A";
+    }
+}
+
+function micro9Click(core)
+{
+    reset_color();
+
+    for(i=0;i<core.length;i++)
+    {
+        ch_td = document.getElementById(core[i]);
+        ch_td.style.background = "#5DC4F0";
+    }
 }
 
 function giClick(core,support)

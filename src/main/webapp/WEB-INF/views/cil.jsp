@@ -31,8 +31,8 @@
                     <option value="부전공">부전공</option>
                 </select>
             </div>-->
-            <div class="area_title"><span>TRACK</span></div>
-            <table class="area_table">
+            <div class="area_title"><span id="area_track">TRACK</span><span id="area_micro">MICRO</span></div>
+            <table class="area_table" id="area_table">
                 <tr>
                     <td class="gi_wrap">
                         <img id="gi_but" src="${pageContext.request.contextPath}/resources/img/area_icon/area_icon_gc.png">
@@ -56,6 +56,23 @@
                 <tr>
                     <td class="md_wrap">
                         <img id="md_but" src="${pageContext.request.contextPath}/resources/img/area_icon/area_icon_md.png">
+                    </td>
+                </tr>
+            </table>
+            <table class="area_table" id="micro_table">
+                <tr>
+                    <td class="gi_wrap">
+                        <span class="micro_comp" id="first_micro">디지털 휴먼</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cd_wrap">
+                        <span class="micro_comp" id="second_micro">메타버스(AR･VR)<br>지식재산</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="de_wrap">
+                        <span class="micro_comp" id="third_micro">메타버스<br>기획</span>
                     </td>
                 </tr>
             </table>
@@ -214,6 +231,24 @@
     $('#md_but').on('click',function(){
     	trackClick(132);
 	});
+
+    $('#area_track').on('click',function(){
+        areaChange(0);
+    });
+
+    $('#area_micro').on('click',function(){
+        areaChange(1);
+    });
+
+    $('#first_micro').on('click',function(){
+        trackClick(777);
+    });
+    $('#second_micro').on('click',function(){
+        trackClick(888);
+    });
+    $('#third_micro').on('click',function(){
+        trackClick(999);
+    });
 
     $(document).ready(function(){
         /*$.ajax({ url: "/cil/subject",

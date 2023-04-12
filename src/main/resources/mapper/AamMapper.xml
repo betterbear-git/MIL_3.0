@@ -34,7 +34,7 @@
 	</select>
 
 	<select id="surveyList" resultType="com.spring.starter.model.surveyDTO" parameterType="map">
-		select id,track_id,name,left(company,13) as company, left(graduate,8) as graduate from survey
+		select id,track_id,replace(name, substr(name, 2, 1), '*') name,left(company,13) as company, left(graduate,8) as graduate from survey
 		where id != 1
 		order by id
 		limit #{startList}, #{listSize}

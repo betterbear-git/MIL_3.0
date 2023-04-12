@@ -54,6 +54,17 @@ public class SubjectController {
         return result;
     }
 
+    @ResponseBody
+    @RequestMapping(value="/cil/area",method=RequestMethod.POST, produces="application/json; charset=utf-8")
+    public Map areaList(Model model, int div)
+    {
+        System.out.println("in"+div);
+        cilDAO dao = sqlSession.getMapper(cilDAO.class);
+        Map<String, Object> result = new HashMap<String, Object>();
+        //result.put("subjectTrackList",dao.subjectTrackList(div));
+        return result;
+    }
+
     @GetMapping("/cil/subject")
     public ResponseEntity<? extends BaseResponse> getAll() {
         List<SubjectDto> collect = subjectService.getAllSubject().stream().map(subject -> new SubjectDto(subject)).collect(Collectors.toList());

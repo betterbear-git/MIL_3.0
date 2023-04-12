@@ -270,15 +270,58 @@ menu�ڽ� �������, ���ڰ�� ���� */
 .jobs_section table th span,
 .jobs_title span, .area_title span
 {
-    height : 25px;
-    width : 110px;
+    height: 25px;
+    width: 89px;
     border-radius: 4px;
     background: #3462DC;
-
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: none;
+    margin: 2px;
+}
+
+#area_micro{
+    background-color: white;
+    color:#3462DC;
+}
+
+#micro_table{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 0px;
+    border-collapse: collapse;
+    margin-top: 0px;
+    margin-left: 6px;
+    height:100%;
+}
+
+#micro_table td {
+    height: 120px;
+    display:flex;
+}
+
+#first_micro{
+    color:#F0E959;
+}
+#second_micro{
+    color:#F0758A;
+}
+#third_micro{
+    color:#5DC4F0;
+}
+
+span.micro_comp {
+    /* margin: 143px; */
+    height: 50px;
+    background: none;
+    box-shadow: none;
+    color: white;
+    width:100%;
+    /* margin-top: 342px; */
 }
 
 .jobs_list{
